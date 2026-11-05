@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黑料网-黑料网曝光内容_黑料网导航与热门事件合集_黑料网资讯聚合</title>
+<meta name="description" content="黑料网是一个聚焦网络曝光内容与热门事件合集的信息聚合页面，提供黑料网导航、热门事件合集、内容分类与安全浏览提示，帮助访问者快速了解黑料网的信息组织方式与使用路径。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141820'/%3E%3Cpath d='M18 20h28v6H18zm0 12h20v6H18zm0 12h28v6H18z' fill='%23e8b04b'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0f1319;
+    --bg-soft:#161c25;
+    --card:#1b2330;
+    --line:#2a3442;
+    --text:#e8ecf2;
+    --muted:#9aa7b8;
+    --accent:#e8b04b;
+    --accent-soft:rgba(232,176,75,.12);
+    --radius:14px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,19,25,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .head-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;height:66px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .brand svg{width:34px;height:34px;display:block}
+  .brand-name{font-size:19px;font-weight:800;letter-spacing:.5px}
+  .brand-name em{font-style:normal;color:var(--accent)}
+  nav.main{display:flex;gap:22px;font-size:14.5px;color:var(--muted)}
+  nav.main a{position:relative;padding:6px 2px;transition:color .2s}
+  nav.main a:hover,nav.main a:focus{color:var(--accent)}
+  nav.main a::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+    background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s;
+  }
+  nav.main a:hover::after{transform:scaleX(1)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:7px 11px;font-size:14px}
+
+  /* hero */
+  .hero{
+    padding:58px 0 44px;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(900px 340px at 82% -10%, rgba(232,176,75,.10), transparent 70%),
+      radial-gradient(600px 260px at 8% 0%, rgba(90,130,200,.10), transparent 70%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:44px;align-items:center}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;color:var(--accent);
+    background:var(--accent-soft);
+    border:1px solid rgba(232,176,75,.28);
+    padding:5px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  h1{font-size:clamp(30px,4.6vw,46px);line-height:1.22;font-weight:800;letter-spacing:1px}
+  h1 .hl{color:var(--accent)}
+  .hero p.lead{margin-top:16px;color:var(--muted);font-size:16px;max-width:34em}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:10px;font-size:15px;font-weight:600;
+    transition:transform .15s,background .2s;
+  }
+  .btn-primary{background:var(--accent);color:#141820}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);background:var(--bg-soft)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .hero-stats{display:flex;gap:30px;margin-top:32px;flex-wrap:wrap}
+  .hero-stats div span{display:block;font-size:23px;font-weight:800;color:var(--accent)}
+  .hero-stats div small{color:var(--muted);font-size:13px}
+
+  /* hero art */
+  .hero-art{
+    background:var(--bg-soft);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+  }
+  .hero-art h2{font-size:14px;color:var(--muted);font-weight:600;letter-spacing:1px;margin-bottom:14px}
+  .topic-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .topic-list li{
+    display:flex;align-items:center;gap:12px;
+    background:var(--card);border:1px solid var(--line);
+    border-radius:10px;padding:10px 12px;font-size:14px;
+  }
+  .topic-list li i{
+    font-style:normal;width:26px;height:26px;flex-shrink:0;border-radius:7px;
+    display:grid;place-items:center;font-size:12px;font-weight:800;
+    background:var(--accent-soft);color:var(--accent);
+  }
+  .topic-list li span{color:var(--muted);font-size:12.5px;margin-left:auto}
+
+  /* sections */
+  section{padding:56px 0}
+  .sec-head{margin-bottom:28px}
+  .sec-head .tag{font-size:13px;color:var(--accent);letter-spacing:2px;font-weight:700}
+  .sec-head h2{font-size:clamp(22px,3vw,28px);font-weight:800;margin-top:6px}
+  .sec-head p{color:var(--muted);font-size:15px;margin-top:8px;max-width:44em}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px;
+    transition:border-color .2s,transform .2s;
+  }
+  .card:hover{border-color:rgba(232,176,75,.45);transform:translateY(-3px)}
+  .card .ic{
+    width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+    background:var(--accent-soft);color:var(--accent);margin-bottom:16px;
+  }
+  .card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+  .card p{font-size:14.5px;color:var(--muted)}
+
+  /* flow */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{
+    background:var(--bg-soft);border:1px solid var(--line);
+    border-radius:var(--radius);padding:20px;position:relative;
+  }
+  .step b{
+    display:inline-block;font-size:13px;color:var(--accent);
+    border:1px solid rgba(232,176,75,.3);border-radius:6px;padding:1px 8px;margin-bottom:12px;
+  }
+  .step h3{font-size:15.5px;margin-bottom:6px}
+  .step p{font-size:13.5px;color:var(--muted)}
+
+  /* list panel */
+  .panel{
+    background:var(--bg-soft);border:1px solid var(--line);
+    border-radius:var(--radius);padding:26px;
+  }
+  .panel h3{font-size:17px;margin-bottom:14px}
+  .panel ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .panel li{
+    display:flex;gap:10px;font-size:14.5px;color:var(--muted);
+    padding-bottom:12px;border-bottom:1px dashed var(--line);
+  }
+  .panel li:last-child{border-bottom:none;padding-bottom:0}
+  .panel li::before{content:"◆";color:var(--accent);font-size:10px;line-height:2.2}
+  .panel li strong{color:var(--text);font-weight:600}
+
+  .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+
+  /* notice */
+  .notice{
+    background:linear-gradient(180deg,var(--accent-soft),transparent);
+    border:1px solid rgba(232,176,75,.28);
+    border-radius:var(--radius);
+    padding:26px;
+  }
+  .notice h3{font-size:17px;color:var(--accent);margin-bottom:10px}
+  .notice p{font-size:14.5px;color:var(--muted)}
+  .notice p + p{margin-top:10px}
+
+  /* faq */
+  .faq{display:flex;flex-direction:column;gap:12px}
+  details{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:12px;padding:16px 20px;
+  }
+  details[open]{border-color:rgba(232,176,75,.4)}
+  summary{
+    cursor:pointer;font-weight:600;font-size:15px;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--accent);font-size:19px;font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:12px;font-size:14.5px;color:var(--muted)}
+
+  /* cta */
+  .cta{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:radial-gradient(700px 260px at 50% 120%, rgba(232,176,75,.12), transparent 70%);
+    text-align:center;padding:60px 0;
+  }
+  .cta h2{font-size:clamp(22px,3vw,30px);font-weight:800}
+  .cta p{color:var(--muted);margin:12px auto 26px;max-width:38em;font-size:15px}
+  .btn-disabled{
+    background:var(--accent);color:#141820;
+    pointer-events:none;opacity:.9;cursor:default;
+  }
+
+  /* footer */
+  footer.site{
+    padding:36px 0 30px;border-top:1px solid var(--line);
+    background:var(--bg-soft);
+  }
+  .foot-top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  .foot-brand{max-width:340px}
+  .foot-brand p{font-size:13.5px;color:var(--muted);margin-top:10px}
+  .foot-links{display:flex;gap:48px;flex-wrap:wrap}
+  .foot-links h4{font-size:14px;margin-bottom:10px}
+  .foot-links a{display:block;font-size:13.5px;color:var(--muted);padding:3px 0}
+  .foot-links a:hover{color:var(--accent)}
+  .foot-bottom{
+    margin-top:26px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .grid-3{grid-template-columns:1fr 1fr}
+    .flow{grid-template-columns:1fr 1fr}
+    .two-col{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    nav.main{
+      display:none;position:absolute;top:66px;left:0;right:0;
+      flex-direction:column;gap:0;background:var(--bg-soft);
+      border-bottom:1px solid var(--line);padding:8px 20px 16px;
+    }
+    nav.main.open{display:flex}
+    nav.main a{padding:11px 0;border-bottom:1px solid var(--line)}
+    .menu-btn{display:block}
+    .grid-3{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr}
+    .hero{padding:40px 0 34px}
+    section{padding:42px 0}
+    .hero-stats{gap:22px}
+    .foot-links{gap:32px}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top" aria-label="黑料网首页">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1b2330" stroke="#2a3442"/>
+        <path d="M18 20h28v6H18z" fill="#e8b04b"/>
+        <path d="M18 32h20v6H18z" fill="#e8b04b" opacity=".75"/>
+        <path d="M18 44h28v6H18z" fill="#e8b04b" opacity=".45"/>
+      </svg>
+      <span class="brand-name">黑料<em>网</em></span>
+    </a>
+    <nav class="main" id="mainNav">
+      <a href="#about">站点说明</a>
+      <a href="#sections">内容分区</a>
+      <a href="#flow">浏览路径</a>
+      <a href="#notice">浏览提示</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">菜单</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">信息聚合 · 曝光内容导航</span>
+        <h1>黑料网</h1>
+        <p class="lead">黑料网以网络曝光内容与热门事件为主线，把分散的信息整理成可检索的分区与目录。这里说明黑料网的内容组织方式、浏览路径与使用提示，帮助你快速定位想看的主题。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#sections">浏览内容分区</a>
+          <a class="btn btn-ghost" href="#about">了解站点说明</a>
+        </div>
+        <div class="hero-stats">
+          <div><span>5</span><small>内容分区</small></div>
+          <div><span>4</span><small>浏览步骤</small></div>
+          <div><span>每日</span><small>目录整理</small></div>
+        </div>
+      </div>
+      <aside class="hero-art" aria-label="热门主题示意">
+        <h2>当前热门主题</h2>
+        <ul class="topic-list">
+          <li><i>01</i>网络热点事件汇总<span>持续更新</span></li>
+          <li><i>02</i>曝光内容目录<span>分类整理</span></li>
+          <li><i>03</i>话题时间线<span>按序排列</span></li>
+          <li><i>04</i>信息核验提示<span>理性阅读</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">站点说明</span>
+        <h2>黑料网是什么</h2>
+        <p>黑料网是一个以曝光类信息为对象的内容聚合页。它本身不生产事件，而是把公开流传的话题、线索与讨论整理成结构清晰的目录，让访问者按主题、时间与热度找到入口。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </div>
+          <h3>按主题归类</h3>
+          <p>黑料网把曝光内容按事件类型划分，人物、行业、消费与网络话题各自成区，减少在零散信息中反复翻找的时间。</p>
+        </article>
+        <article class="card">
+          <div class="ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>
+          </div>
+          <h3>按时间排列</h3>
+          <p>同一话题下的多条内容按先后顺序排列，便于看清事件从出现到发酵的过程，而不是只看到某一个切面。</p>
+        </article>
+        <article class="card">
+          <div class="ic" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 4v6c0 4-3 6.5-7 8-4-1.5-7-4-7-8V7z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>
+          </div>
+          <h3>标注可信程度</h3>
+          <p>黑料网对内容区分“已公开报道”“网络流传”“待核验”等状态，阅读前先看标注，再决定是否继续深入了解。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sections">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">内容分区</span>
+        <h2>黑料网的四个主要栏目</h2>
+        <p>栏目按信息用途划分，而不是简单堆叠。每个分区承担不同的阅读任务，你可以只进入与自己需求相关的那一部分。</p>
+      </div>
+      <div class="flow">
+        <div class="step">
+          <b>01</b>
+          <h3>热点事件</h3>
+          <p>聚焦短期内讨论量较高的话题，提供事件概述、时间节点与相关讨论的入口，适合快速了解来龙去脉。</p>
+        </div>
+        <div class="step">
+          <b>02</b>
+          <h3>曝光目录</h3>
+          <p>按行业与领域整理的曝光内容清单，每条附一句话摘要，方便按兴趣挑选，不必逐条点开。</p>
+        </div>
+        <div class="step">
+          <b>03</b>
+          <h3>话题时间线</h3>
+          <p>把同一事件的多条信息按日期串成一条线，帮助判断信息出现的先后与整体走向。</p>
+        </div>
+        <div class="step">
+          <b>04</b>
+          <h3>阅读提示</h3>
+          <p>汇总辨别信息真伪的常用方法，包括来源比对、时间核对与多方交叉，降低误读概率。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="flow">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">浏览路径</span>
+        <h2>如何高效使用黑料网</h2>
+        <p>黑料网的信息量较大，按固定路径浏览可以少走弯路。下面的顺序适用于第一次访问，也适合把它当作日常查看的清单。</p>
+      </div>
+      <div class="two-col">
+        <div class="panel">
+          <h3>推荐的四步浏览法</h3>
+          <ul>
+            <li><strong>先看热点事件。</strong>确认近期讨论集中的主题，判断是否与自己关注的方向一致。</li>
+            <li><strong>再进曝光目录。</strong>按行业筛选，找到与热点相关的背景条目，补充上下文。</li>
+            <li><strong>打开话题时间线。</strong>核对关键节点日期，避免把旧信息当成新进展。</li>
+            <li><strong>最后读阅读提示。</strong>对照来源标注，判断哪些内容可以采信、哪些仍需等待更多信息。</li>
+          </ul>
+        </div>
+        <div class="notice" id="notice">
+          <h3>浏览提示</h3>
+          <p>曝光类内容容易夹杂未经证实的说法。黑料网在整理时保留来源标注，但不对事件本身下结论，读者应自行核对原始出处。</p>
+          <p>涉及个人隐私、未成年人或正在处理中的纠纷，请以官方通报与正规媒体报道为准，不要转发未经核实的信息。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">常见问题</span>
+        <h2>关于黑料网的问答</h2>
+        <p>以下问题来自访问者对黑料网最常见的疑问，回答只说明页面本身的信息组织方式，不涉及具体事件判断。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>黑料网的内容从哪里来？</summary>
+          <p>黑料网整理的内容主要来自公开渠道的讨论与报道，页面负责分类与编排，并保留来源标注。它不代替原始信源，也不对未经核实的说法作背书。</p>
+        </details>
+        <details>
+          <summary>黑料网会持续更新吗？</summary>
+          <p>目录与分区会随话题变化进行调整，热点事件与时间线部分更新相对频繁。具体更新节奏以页面实际呈现为准，不承诺固定频率。</p>
+        </details>
+        <details>
+          <summary>怎样判断一条曝光信息的可信度？</summary>
+          <p>先看是否标注来源，再看是否有多个独立渠道提及，最后核对时间与细节是否一致。三者都成立的条目，可信度相对更高；只有单一来源且无细节支撑的，建议保持谨慎。</p>
+        </details>
+        <details>
+          <summary>黑料网适合哪些访问者？</summary>
+          <p>适合希望快速了解网络热点脉络、需要按主题查找曝光内容的读者。若你关注的是法律结论或官方定性，应优先查阅权威发布渠道。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>开始浏览黑料网的内容分区</h2>
+      <p>从热点事件入手，再沿时间线补充背景，最后用阅读提示做一次自查。黑料网希望提供的是清晰的路径，而不是结论。</p>
+      <a class="btn btn-primary" href="#sections">进入内容分区</a>
+      <a class="btn btn-primary btn-disabled" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1b2330" stroke="#2a3442"/>
+            <path d="M18 20h28v6H18z" fill="#e8b04b"/>
+            <path d="M18 32h20v6H18z" fill="#e8b04b" opacity=".75"/>
+            <path d="M18 44h28v6H18z" fill="#e8b04b" opacity=".45"/>
+          </svg>
+          <span class="brand-name">黑料<em>网</em></span>
+        </a>
+        <p>黑料网以曝光内容与热门事件为线索，提供分类目录、时间线与阅读提示，帮助访问者有序了解话题脉络。</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>栏目</h4>
+          <a href="#sections">热点事件</a>
+          <a href="#sections">曝光目录</a>
+          <a href="#sections">话题时间线</a>
+          <a href="#notice">阅读提示</a>
+        </div>
+        <div>
+          <h4>使用</h4>
+          <a href="#flow">浏览路径</a>
+          <a href="#faq">常见问题</a>
+          <a href="#about">站点说明</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 黑料网 · 信息聚合与导航页面</span>
+      <span>内容仅供参考，请以官方发布为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn=document.getElementById('menuBtn');
+    var nav=document.getElementById('mainNav');
+    if(!btn||!nav)return;
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=640){
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+  })();
+</script>
+</body>
+            </html>
