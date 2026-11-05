@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日乱斗官网-每日乱斗玩法解析_乱斗游戏官方资讯站</title>
+<meta name="description" content="每日乱斗官网是每日乱斗的官方资讯站，提供每日乱斗玩法介绍、每日乱斗模式规则、每日乱斗新手入门与版本更新记录，帮助玩家快速了解每日乱斗的日常玩法与入口信息。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b1f2a'/%3E%3Cpath d='M18 42 L32 16 L46 42 Z' fill='%23ff7a3d'/%3E%3Ccircle cx='32' cy='46' r='5' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#1b1f2a;
+    --ink-soft:#39404f;
+    --paper:#f6f4ef;
+    --card:#ffffff;
+    --line:#e2ddd2;
+    --accent:#ff7a3d;
+    --accent-deep:#e2531b;
+    --gold:#ffd166;
+    --teal:#2f7d72;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,"Segoe UI",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px;}
+
+  /* Header */
+  header.site{
+    background:var(--ink);
+    color:#fff;
+    border-bottom:3px solid var(--accent);
+    position:sticky;top:0;z-index:40;
+  }
+  .bar{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:12px 0;flex-wrap:wrap;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-weight:800;font-size:18px;letter-spacing:.5px;
+    color:#fff;
+  }
+  .logo .mark{
+    width:38px;height:38px;flex:none;
+    background:linear-gradient(140deg,var(--accent),var(--gold));
+    border-radius:10px;
+    display:grid;place-items:center;
+  }
+  .logo .mark svg{width:24px;height:24px;}
+  nav.main ul{
+    list-style:none;display:flex;gap:6px;margin:0;padding:0;flex-wrap:wrap;
+  }
+  nav.main a{
+    display:block;padding:7px 12px;border-radius:8px;
+    font-size:14px;color:#d8dbe3;transition:.2s;
+  }
+  nav.main a:hover,nav.main a:focus{background:rgba(255,255,255,.12);color:#fff;}
+
+  /* Hero */
+  .hero{
+    background:
+      radial-gradient(circle at 88% 12%, rgba(255,209,102,.22), transparent 42%),
+      radial-gradient(circle at 8% 88%, rgba(255,122,61,.20), transparent 46%),
+      var(--ink);
+    color:#fff;
+    padding:46px 0 52px;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.25fr .75fr;gap:36px;align-items:center;
+  }
+  .kicker{
+    display:inline-block;font-size:13px;letter-spacing:2px;
+    color:var(--gold);border:1px solid rgba(255,209,102,.5);
+    padding:3px 10px;border-radius:999px;margin-bottom:14px;
+  }
+  h1{
+    font-size:38px;line-height:1.25;margin:0 0 16px;
+    font-weight:900;letter-spacing:.5px;
+  }
+  .hero p.lead{
+    font-size:16px;color:#c9cdd8;margin:0 0 24px;max-width:34em;
+  }
+  .cta{
+    display:flex;gap:12px;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:10px;font-weight:700;font-size:15px;
+    border:1px solid transparent;transition:.2s;
+  }
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-deep);}
+  .btn-ghost{border-color:rgba(255,255,255,.35);color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);}
+  .btn[data-download-placeholder="true"]{opacity:.9;pointer-events:none;}
+
+  .hero-art{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:18px;padding:18px;
+  }
+  .hero-art svg{width:100%;height:auto;}
+
+  /* Sections */
+  section{padding:48px 0;}
+  section:nth-of-type(even){background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .sec-head{margin-bottom:26px;}
+  .sec-head h2{
+    font-size:26px;margin:0 0 8px;font-weight:800;letter-spacing:.5px;
+  }
+  .sec-head p{margin:0;color:var(--ink-soft);font-size:15px;}
+  .sec-head .tag{
+    font-size:12px;color:var(--teal);font-weight:700;letter-spacing:2px;
+    display:block;margin-bottom:6px;
+  }
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;transition:.2s;
+  }
+  .card:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .card h3{margin:0 0 8px;font-size:17px;font-weight:800;}
+  .card p{margin:0;font-size:14.5px;color:var(--ink-soft);}
+  .card .ico{
+    width:40px;height:40px;border-radius:10px;
+    background:rgba(255,122,61,.12);display:grid;place-items:center;margin-bottom:12px;
+  }
+  .card .ico svg{width:22px;height:22px;}
+
+  /* Rules list */
+  .rules{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:4px;}
+  .rule{
+    background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);
+    border-radius:10px;padding:16px 18px;
+  }
+  .rule strong{display:block;font-size:15.5px;margin-bottom:4px;}
+  .rule span{font-size:14px;color:var(--ink-soft);}
+
+  /* Table */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff;}
+  table{width:100%;border-collapse:collapse;min-width:520px;font-size:14.5px;}
+  th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);}
+  th{background:#f0ece3;font-weight:800;font-size:14px;color:var(--ink);}
+  tr:last-child td{border-bottom:none;}
+  td .pill{
+    display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;
+  }
+  .pill-new{background:rgba(255,122,61,.16);color:var(--accent-deep);}
+  .pill-ok{background:rgba(47,125,114,.14);color:var(--teal);}
+
+  /* FAQ */
+  details{
+    background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:16px 18px;margin-bottom:12px;
+  }
+  details[open]{border-color:var(--accent);}
+  summary{
+    cursor:pointer;font-weight:800;font-size:15.5px;list-style:none;
+    display:flex;justify-content:space-between;gap:12px;align-items:center;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"＋";color:var(--accent);font-weight:800;}
+  details[open] summary::after{content:"－";}
+  details p{margin:12px 0 0;font-size:14.5px;color:var(--ink-soft);}
+
+  /* Download strip */
+  .download{
+    background:linear-gradient(135deg,#1b1f2a,#2d3446);
+    color:#fff;border-radius:18px;padding:32px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .download h2{margin:0 0 6px;font-size:22px;}
+  .download p{margin:0;color:#c9cdd8;font-size:14.5px;max-width:34em;}
+
+  footer.site{
+    background:var(--ink);color:#aeb4c2;padding:34px 0 26px;margin-top:0;
+    font-size:14px;
+  }
+  footer.site .f-top{
+    display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:18px;
+  }
+  footer.site .f-brand{color:#fff;font-weight:800;font-size:16px;}
+  footer.site p{margin:6px 0 0;line-height:1.7;}
+  footer.site a{color:#d8dbe3;}
+  footer.site a:hover{color:var(--gold);}
+  .f-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .copyright{font-size:13px;color:#8b92a3;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:340px;}
+    h1{font-size:30px;}
+    .grid-3{grid-template-columns:1fr;}
+    .grid-2{grid-template-columns:1fr;}
+    .rules{grid-template-columns:1fr;}
+    .bar{justify-content:center;}
+    nav.main ul{justify-content:center;}
+    section{padding:38px 0;}
+    .download{padding:24px;}
+  }
+  @media (max-width:480px){
+    h1{font-size:26px;}
+    .logo{font-size:16px;}
+    .logo .mark{width:32px;height:32px;}
+    .btn{width:100%;justify-content:center;}
+    .hero{padding:34px 0 38px;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="每日乱斗官网首页">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M16 5 L27 26 H5 Z" fill="#1b1f2a" opacity=".85"/>
+          <circle cx="16" cy="21" r="3.4" fill="#fff"/>
+        </svg>
+      </span>
+      <span>每日乱斗官网</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <ul>
+        <li><a href="#intro">玩法介绍</a></li>
+        <li><a href="#rules">模式规则</a></li>
+        <li><a href="#schedule">每日轮换</a></li>
+        <li><a href="#start">新手指引</a></li>
+        <li><a href="#faq">常见问题</a></li>
+        <li><a href="#download">下载</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">每日玩法 · 官方资讯</span>
+        <h1>每日乱斗官网</h1>
+        <p class="lead">每日乱斗官网集中整理每日乱斗的玩法结构、每日轮换规则与新手入门要点。这里不做夸张承诺，只把每天换新的对战形式讲清楚，让你在进入对局前就知道今天该玩什么、怎么玩。</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#intro">了解每日乱斗玩法</a>
+          <a class="btn btn-ghost" href="#schedule">查看每日轮换</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 320 240" fill="none">
+          <rect x="0" y="0" width="320" height="240" rx="14" fill="#232838"/>
+          <circle cx="252" cy="54" r="30" fill="#ff7a3d" opacity=".28"/>
+          <circle cx="68" cy="188" r="38" fill="#2f7d72" opacity=".3"/>
+          <path d="M160 44 L214 148 H106 Z" fill="#ff7a3d"/>
+          <path d="M160 78 L192 140 H128 Z" fill="#ffd166"/>
+          <rect x="96" y="170" width="128" height="12" rx="6" fill="#4a5268"/>
+          <rect x="118" y="192" width="84" height="10" rx="5" fill="#39404f"/>
+          <circle cx="160" cy="128" r="8" fill="#1b1f2a"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section id="intro">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">玩法介绍</span>
+        <h2>每日乱斗是什么：一天一个规则的对战形式</h2>
+        <p>每日乱斗的核心是“每天换一套规则”。同一套基础操作下，每日乱斗会按日切换不同的对局条件，让熟悉基础打法的玩家每天都有新的判断点。每日乱斗官网把这类变化按栏目拆开说明，方便你快速定位今天的关键差别。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff7a3d" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/>
+            </svg>
+          </div>
+          <h3>按日切换</h3>
+          <p>每日乱斗的对局条件以自然日为单位变化，当天进入即对应当天规则，不需要额外切换入口。</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f7d72" stroke-width="2" stroke-linecap="round">
+              <path d="M4 18 L10 6 L16 14 L20 8"/><circle cx="20" cy="18" r="2"/>
+            </svg>
+          </div>
+          <h3>门槛清晰</h3>
+          <p>每日乱斗沿用同一套基础操作，变化集中在规则与场地，新手可以先按固定流程熟悉节奏。</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round">
+              <path d="M12 3 L14.5 9 L21 9.5 L16 13.5 L17.5 20 L12 16.5 L6.5 20 L8 13.5 L3 9.5 L9.5 9 Z"/>
+            </svg>
+          </div>
+          <h3>每天有重点</h3>
+          <p>不同日的每日乱斗侧重不同，有的考验走位，有的考验资源取舍，提前知道重点能少走弯路。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules -->
+  <section id="rules">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">模式规则</span>
+        <h2>每日乱斗的通用规则框架</h2>
+        <p>无论当天是哪一套条件，每日乱斗都遵循同一套基础框架。理解这四条，就能在规则切换时迅速对上号。</p>
+      </div>
+      <div class="rules">
+        <div class="rule">
+          <strong>单局独立结算</strong>
+          <span>每日乱斗每局单独计分，前一天的进度不累积到当天，避免规则切换带来理解负担。</span>
+        </div>
+        <div class="rule">
+          <strong>当天规则固定</strong>
+          <span>每日乱斗在当天内保持一致，中途不会临时更换条件，方便反复尝试与复盘。</span>
+        </div>
+        <div class="rule">
+          <strong>基础操作共用</strong>
+          <span>移动、攻击、技能等基础操作与常规对局一致，每日乱斗只改变对局条件不加操作门槛。</span>
+        </div>
+        <div class="rule">
+          <strong>胜负条件随日调整</strong>
+          <span>部分日期的每日乱斗以存活为目标，部分以资源或击倒数为目标，进入前先看清当天目标。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">每日轮换</span>
+        <h2>每日轮换的查看方式</h2>
+        <p>每日乱斗的轮换信息以对局入口的当日显示为准。下表说明常见轮换维度与查看位置，帮助你在进入前完成确认。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">每日乱斗轮换维度与查看位置</caption>
+          <thead>
+            <tr><th scope="col">轮换维度</th><th scope="col">说明</th><th scope="col">查看位置</th><th scope="col">状态</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>主题规则</td>
+              <td>当天每日乱斗的核心条件，决定胜负目标</td>
+              <td>对局入口当日说明</td>
+              <td><span class="pill pill-new">每日变化</span></td>
+            </tr>
+            <tr>
+              <td>场地条件</td>
+              <td>地形与障碍布局，影响走位与资源点位置</td>
+              <td>对局入口当日说明</td>
+              <td><span class="pill pill-new">每日变化</span></td>
+            </tr>
+            <tr>
+              <td>基础操作</td>
+              <td>移动、攻击与技能等通用操作</td>
+              <td>固定不变</td>
+              <td><span class="pill pill-ok">长期固定</span></td>
+            </tr>
+            <tr>
+              <td>结算方式</td>
+              <td>单局独立结算，当天内进度不跨日累积</td>
+              <td>固定不变</td>
+              <td><span class="pill pill-ok">长期固定</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start -->
+  <section id="start">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">新手指引</span>
+        <h2>第一次进入每日乱斗的建议顺序</h2>
+        <p>新手不必一次掌握所有变化。按下面四步走，先熟悉固定的部分，再逐步适应每天不同的部分。</p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <h3>第一步：先看当天目标</h3>
+          <p>进入每日乱斗前，先在对局入口确认当天胜负条件。这一步能避免用昨天的思路打今天的局。</p>
+        </article>
+        <article class="card">
+          <h3>第二步：熟悉基础操作</h3>
+          <p>每日乱斗的移动与攻击逻辑与常规一致，建议先在低压力对局中把手感稳定下来。</p>
+        </article>
+        <article class="card">
+          <h3>第三步：记场地要点</h3>
+          <p>每天的地形布局不同，关注资源点、窄道与开阔区的相对位置，比记复杂连招更实用。</p>
+        </article>
+        <article class="card">
+          <h3>第四步：单日复盘</h3>
+          <p>每日乱斗当天规则固定，适合在同一条件下多打几局，把失误点收敛成自己的固定应对。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">常见问题</span>
+        <h2>关于每日乱斗的高频疑问</h2>
+        <p>以下回答基于每日乱斗官网已说明的规则范围，涉及具体数值与活动安排时，以对局入口的当日显示为准。</p>
+      </div>
+      <details>
+        <summary>每日乱斗需要单独下载客户端吗？</summary>
+        <p>每日乱斗是常规对局体系内的每日玩法，通过同一客户端内的对局入口进入，不需要额外下载独立程序。具体入口位置以客户端当日显示为准。</p>
+      </details>
+      <details>
+        <summary>错过某一天的每日乱斗会补回来吗？</summary>
+        <p>每日乱斗按自然日切换，当天规则固定且单局独立结算，未参与的日子不会顺延补开。想体验特定条件，需要在该条件出现的当天进入。</p>
+      </details>
+      <details>
+        <summary>每日乱斗的进度会累积到第二天吗？</summary>
+        <p>不会。每日乱斗以单局为结算单位，当天内的成绩不跨日累积，因此每天进入都是从当天条件重新开始。</p>
+      </details>
+      <details>
+        <summary>新手适合从哪一类每日乱斗开始？</summary>
+        <p>建议从目标简单、以存活或基础击倒为主的日子开始，先建立对场地和节奏的熟悉度，再尝试资源取舍类条件。</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download">
+    <div class="wrap">
+      <div class="download">
+        <div>
+          <h2>获取每日乱斗入口</h2>
+          <p>每日乱斗官网的下载入口用于获取包含每日乱斗对局入口的客户端。下载文件与版本信息以正式发布页为准，当前入口仍在整理中。</p>
+        </div>
+        <a class="btn btn-primary" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <div class="f-brand">每日乱斗官网</div>
+        <p>每日乱斗官网 · 每日玩法与规则说明资讯站</p>
+      </div>
+      <div class="f-links">
+        <a href="#intro">玩法介绍</a>
+        <a href="#rules">模式规则</a>
+        <a href="#schedule">每日轮换</a>
+        <a href="#start">新手指引</a>
+        <a href="#faq">常见问题</a>
+      </div>
+    </div>
+    <p class="copyright">每日乱斗官网整理每日乱斗的玩法结构与规则说明，具体对局条件与数值以游戏内当日显示为准。</p>
+  </div>
+</footer>
+
+</body>
+</html>
