@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2345影视大全-影视大全在线观看_电影电视剧资源聚合与片单推荐</title>
+<meta name="description" content="2345影视大全是一个影视资源聚合导航首页，按电影、电视剧、综艺、动漫分类整理影片信息，提供热门片单、类型筛选与观看指引，帮助访客快速找到想看的影视内容。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101828'/%3E%3Cpath d='M24 18l24 14-24 14z' fill='%23ff5a5f'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0c1220;
+  --bg-soft:#121a2c;
+  --panel:#151f34;
+  --line:#243149;
+  --text:#e8edf7;
+  --muted:#9aa8c0;
+  --accent:#ff5a5f;
+  --accent2:#ffb84d;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;}
+.wrap{width:min(1120px,92vw);margin:0 auto;}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent2);outline-offset:3px;border-radius:6px;}
+
+/* header */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(12,18,32,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;gap:26px;padding:14px 0;}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.logo .mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(140deg,#ff5a5f,#ff8a4d);display:grid;place-items:center;}
+.logo .mark svg{width:20px;height:20px;}
+.logo b{font-size:1.15rem;letter-spacing:.5px;white-space:nowrap;}
+nav.main{display:flex;gap:20px;font-size:.93rem;color:var(--muted);flex-wrap:wrap;}
+nav.main a:hover{color:var(--text);}
+.nav-search{margin-left:auto;display:flex;align-items:center;gap:8px;}
+.nav-search input{
+  width:170px;padding:8px 12px;border-radius:9px;border:1px solid var(--line);
+  background:var(--bg-soft);color:var(--text);font-size:.9rem;font-family:inherit;
+}
+.nav-search input::placeholder{color:#6f7f9c;}
+.nav-search button{
+  padding:8px 14px;border:none;border-radius:9px;background:var(--accent);color:#fff;
+  font-size:.88rem;font-family:inherit;cursor:pointer;
+}
+.nav-search button:hover{background:#ff7176;}
+
+/* hero */
+.hero{padding:64px 0 52px;position:relative;overflow:hidden;}
+.hero::before{
+  content:"";position:absolute;right:-140px;top:-120px;width:460px;height:460px;
+  background:radial-gradient(circle,rgba(255,90,95,.22),transparent 68%);pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;left:-120px;bottom:-160px;width:380px;height:380px;
+  background:radial-gradient(circle,rgba(255,184,77,.12),transparent 70%);pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;font-size:.8rem;letter-spacing:1.5px;
+  color:var(--accent2);border:1px solid rgba(255,184,77,.35);border-radius:999px;
+  padding:4px 14px;margin-bottom:20px;
+}
+h1{font-size:clamp(2rem,4.4vw,3.1rem);line-height:1.22;letter-spacing:.5px;margin-bottom:18px;}
+h1 .hl{color:var(--accent);}
+.hero p.lead{color:var(--muted);font-size:1.02rem;max-width:34em;margin-bottom:28px;}
+.btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:11px;
+  font-size:.98rem;font-weight:600;transition:.18s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#fff;}
+.btn-primary:hover{background:#ff7176;}
+.btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.02);}
+.btn-ghost:hover{border-color:#40547a;}
+.btn[aria-disabled="true"]{cursor:not-allowed;opacity:.75;}
+.hero-visual{
+  background:linear-gradient(160deg,#182238,#101827);
+  border:1px solid var(--line);border-radius:20px;padding:22px;position:relative;
+}
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.reel .thumb{aspect-ratio:2/3;border-radius:9px;position:relative;overflow:hidden;}
+.reel .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55));}
+.reel .t1{background:linear-gradient(150deg,#3a2a5c,#7b4bb0);}
+.reel .t2{background:linear-gradient(150deg,#1f3e5c,#2f86b8);}
+.reel .t3{background:linear-gradient(150deg,#5c2a34,#b84b5a);}
+.reel .t4{background:linear-gradient(150deg,#2b4a32,#4f9a5e);}
+.reel .t5{background:linear-gradient(150deg,#5a4521,#b8903c);}
+.reel .t6{background:linear-gradient(150deg,#332a4d,#5e5389);}
+.hero-visual .cap{font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between;align-items:center;}
+.hero-visual .cap span:last-child{color:var(--accent2);}
+
+/* sections */
+section{padding:54px 0;}
+.sec-head{margin-bottom:30px;}
+.sec-head h2{font-size:clamp(1.35rem,2.6vw,1.75rem);margin-bottom:8px;}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:44em;}
+
+/* category cards */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;transition:.2s;position:relative;overflow:hidden;
+}
+.card:hover{border-color:#3b4f74;transform:translateY(-3px);}
+.card .ico{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;margin-bottom:14px;background:rgba(255,90,95,.12);}
+.card .ico svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.card h3{font-size:1.02rem;margin-bottom:6px;}
+.card p{font-size:.86rem;color:var(--muted);line-height:1.65;}
+.card .cnt{display:inline-block;margin-top:12px;font-size:.78rem;color:var(--accent2);}
+
+/* filter */
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;}
+.chip{
+  padding:7px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;
+  color:var(--muted);font-size:.87rem;font-family:inherit;cursor:pointer;transition:.16s;
+}
+.chip:hover{color:var(--text);border-color:#40547a;}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* list */
+.list-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.item{
+  display:flex;gap:14px;background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:16px;transition:.2s;
+}
+.item:hover{border-color:#3b4f74;}
+.item .poster{
+  width:64px;flex-shrink:0;aspect-ratio:2/3;border-radius:8px;
+}
+.item .meta h3{font-size:.98rem;margin-bottom:4px;}
+.item .meta .tag{font-size:.78rem;color:var(--accent2);margin-bottom:6px;}
+.item .meta p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+.no-result{grid-column:1/-1;text-align:center;color:var(--muted);font-size:.95rem;padding:36px 0;display:none;}
+
+/* guide */
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.guide{
+  border-left:3px solid var(--accent);background:var(--bg-soft);border-radius:0 var(--radius) var(--radius) 0;
+  padding:22px 24px;
+}
+.guide h3{font-size:1rem;margin-bottom:10px;}
+.guide p{font-size:.88rem;color:var(--muted);line-height:1.75;}
+.guide .num{font-size:.78rem;color:var(--accent2);letter-spacing:1px;display:block;margin-bottom:8px;}
+
+/* about */
+.about-panel{
+  background:linear-gradient(150deg,#141e31,#101827);
+  border:1px solid var(--line);border-radius:18px;padding:clamp(26px,4vw,44px);
+}
+.about-panel h2{font-size:clamp(1.3rem,2.5vw,1.7rem);margin-bottom:16px;}
+.about-panel p{color:var(--muted);font-size:.95rem;margin-bottom:14px;max-width:52em;}
+.about-panel p:last-child{margin-bottom:0;}
+
+/* footer */
+footer.site{border-top:1px solid var(--line);padding:34px 0 44px;margin-top:20px;}
+.foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start;}
+.foot-brand b{font-size:1rem;display:block;margin-bottom:8px;}
+.foot-brand p{font-size:.82rem;color:var(--muted);max-width:30em;line-height:1.7;}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap;font-size:.85rem;color:var(--muted);}
+.foot-links a:hover{color:var(--text);}
+.copy{margin-top:26px;font-size:.78rem;color:#64748b;}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:36px;}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .list-grid{grid-template-columns:1fr;}
+  .guide-grid{grid-template-columns:1fr;}
+  .nav-inner{flex-wrap:wrap;gap:14px;}
+  .nav-search{margin-left:0;width:100%;}
+  .nav-search input{flex:1;width:auto;}
+}
+@media(max-width:560px){
+  .hero{padding:42px 0 34px;}
+  section{padding:40px 0;}
+  .cat-grid{grid-template-columns:1fr;}
+  nav.main{gap:14px;font-size:.88rem;}
+  .item .poster{width:54px;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top" aria-label="2345影视大全 首页">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="#fff"/></svg>
+      </span>
+      <b>2345影视大全</b>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#category">影视分类</a>
+      <a href="#library">片库速览</a>
+      <a href="#guide">找片指南</a>
+      <a href="#about">关于本站</a>
+    </nav>
+    <div class="nav-search">
+      <input id="q" type="search" placeholder="搜索影片名称或类型" aria-label="搜索影片名称或类型">
+      <button type="button" id="searchBtn">搜索</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">影视资源聚合导航</span>
+        <h1>2345影视大全</h1>
+        <p class="lead">2345影视大全把电影、电视剧、综艺与动漫的影片信息集中在一页，按类型与题材整理成清晰片单。想找一部片子，先在这里看清分类与简介，再决定去哪个平台观看。</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#library">浏览片库</a>
+          <a class="btn btn-ghost" href="#guide">查看找片指南</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="reel">
+          <div class="thumb t1"></div><div class="thumb t2"></div><div class="thumb t3"></div>
+          <div class="thumb t4"></div><div class="thumb t5"></div><div class="thumb t6"></div>
+        </div>
+        <div class="cap"><span>本周片单 · 六大题材</span><span>每日更新</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="category">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>按类型进入片库</h2>
+        <p>2345影视大全将内容划分为四类主要形态，每类再按题材细分。先选形态，再选题材，比逐页翻找更快。</p>
+      </div>
+      <div class="cat-grid">
+        <a class="card" href="#library">
+          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 10h4M3 14h4M17 10h4M17 14h4"/></svg></span>
+          <h3>电影</h3>
+          <p>剧情、科幻、悬疑、喜剧等院线与网络电影，附时长与年份信息。</p>
+          <span class="cnt">片单分区</span>
+        </a>
+        <a class="card" href="#library">
+          <span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M8 6v12M16 6v12"/></svg></span>
+          <h3>电视剧</h3>
+          <p>国产剧、日韩剧、欧美剧，标注集数与更新状态，便于追更。</p>
+          <span class="cnt">连载与完结</span>
+        </a>
+        <a class="card" href="#library">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg></span>
+          <h3>综艺</h3>
+          <p>真人秀、访谈、竞技与音乐类节目，按播出季归档。</p>
+          <span class="cnt">按季整理</span>
+        </a>
+        <a class="card" href="#library">
+          <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01M9 15c1.6 1.2 4.4 1.2 6 0"/></svg></span>
+          <h3>动漫</h3>
+          <p>国创、日番与剧场版动画，区分连载与完结作品。</p>
+          <span class="cnt">番剧分区</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="library">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>片库速览</h2>
+        <p>下列条目为 2345影视大全 的影片信息示例，展示名称、类型、年份与一句话简介。点击上方类型筛选可缩小范围，也可用页首搜索框按片名检索。</p>
+      </div>
+      <div class="filter-bar" role="group" aria-label="按类型筛选影片">
+        <button class="chip active" data-filter="all" type="button">全部</button>
+        <button class="chip" data-filter="movie" type="button">电影</button>
+        <button class="chip" data-filter="tv" type="button">电视剧</button>
+        <button class="chip" data-filter="show" type="button">综艺</button>
+        <button class="chip" data-filter="anime" type="button">动漫</button>
+      </div>
+      <div class="list-grid" id="listGrid">
+        <article class="item" data-type="movie" data-name="星际远航">
+          <div class="poster" style="background:linear-gradient(150deg,#1f3e5c,#2f86b8);border-radius:8px;" aria-hidden="true"></div>
+          <div class="meta">
+            <h3>星际远航</h3>
+            <div class="tag">电影 · 科幻 · 2023</div>
+            <p>一支科考队驶向深空边缘，途中发现航行日志被人为改写。</p>
+          </div>
+        </article>
+        <article class="item" data-type="tv" data-name="长夜书店">
+          <div class="poster" style="background:linear-gradient(150deg,#3a2a5c,#7b4bb0);border-radius:8px;" aria-hidden="true"></div>
+          <div class="meta">
+            <h3>长夜书店</h3>
+            <div class="tag">电视剧 · 都市 · 2024 · 连载中</div>
+            <p>老城区一间深夜书店，串联起十二位常客各自的生活转折。</p>
+          </div>
+        </article>
+        <article class="item" data-type="anime" data-name="云上邮差">
+          <div class="poster" style="background:linear-gradient(150deg,#2b4a32,#4f9a5e);border-radius:8px;" aria-hidden="true"></div>
+          <div class="meta">
+            <h3>云上邮差</h3>
+            <div class="tag">动漫 · 治愈 · 2023 · 已完结</div>
+            <p>少年邮差乘热气球往返云端小镇，送信途中遇见形形色色的人。</p>
+          </div>
+        </article>
+        <article class="item" data-type="show" data-name="厨房对决">
+          <div class="poster" style="background:linear-gradient(150deg,#5a4521,#b8903c);border-radius:8px;" aria-hidden="true"></div>
+          <div class="meta">
+            <h3>厨房对决</h3>
+            <div class="tag">综艺 · 美食竞技 · 2024</div>
+            <p>八组厨师限时完成主题菜品，评审从味道、创意与成本三项打分。</p>
+          </div>
+        </article>
+        <article class="item" data-type="movie" data-name="旧城谜案">
+          <div class="poster" style="background:linear-gradient(150deg,#5c2a34,#b84b5a);border-radius:8px;" aria-hidden="true"></div>
+          <div class="meta">
+            <h3>旧城谜案</h3>
+            <div class="tag">电影 · 悬疑 · 2022</div>
+            <p>一桩尘封十年的失踪案重启调查，线索指向当年的三位证人。</p>
+          </div>
+        </article>
+        <article class="item" data-type="tv" data-name="山海之间">
+          <div class="poster" style="background:linear-gradient(150deg,#332a4d,#5e5389);border-radius:8px;" aria-hidden="true"></div>
+          <div class="meta">
+            <h3>山海之间</h3>
+            <div class="tag">电视剧 · 家庭 · 2023 · 已完结</div>
+            <p>沿海小城三代人的迁徙与留守，一部关于归处的群像剧。</p>
+          </div>
+        </article>
+        <div class="no-result" id="noResult">没有匹配的影片，换个关键词或切换类型试试。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>找片指南</h2>
+        <p>2345影视大全 提供的是影片信息与分类索引，不存放视频文件。以下三步帮助你把“想看的模糊印象”变成可执行的观看路径。</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide">
+          <span class="num">STEP 01</span>
+          <h3>先确定形态与题材</h3>
+          <p>按电影、电视剧、综艺、动漫先缩小一半范围，再选题材词，如悬疑、都市、治愈。类型交叉能明显减少无效浏览。</p>
+        </div>
+        <div class="guide">
+          <span class="num">STEP 02</span>
+          <h3>用片名或关键词检索</h3>
+          <p>记得片名时直接用页首搜索框；只记得零散情节时，用主演、年份或题材词组合检索，命中后再核对简介。</p>
+        </div>
+        <div class="guide">
+          <span class="num">STEP 03</span>
+          <h3>核对信息再去观看</h3>
+          <p>确认年份、集数与更新状态后，再到持有版权的正规平台观看。2345影视大全 的条目只承担索引与信息核对作用。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about-panel">
+        <h2>关于 2345影视大全</h2>
+        <p>2345影视大全 是一个影视资源聚合导航页面：它把分散在不同平台的影片条目按统一格式整理，让访客在一个页面上比较类型、年份与简介，而不必在多个站内反复跳转。</p>
+        <p>本站不提供在线播放，也不托管任何视频文件。页面上的片名、类型、年份与简介用于信息索引，观看请前往持有相应版权的正规平台。片库条目会随着整理进度逐步补充，标注的年份与连载状态以条目所在平台公开信息为准。</p>
+        <p>如果你常为“记得剧情却想不起片名”而困扰，可以从找片指南的第一步开始；如果只是随便逛逛，片库速览的类型筛选更适合你。2345影视大全 希望把找片这件事，缩短到几次点击之内。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <b>2345影视大全</b>
+        <p>影视资源聚合导航与片单索引。不提供在线播放，观看请支持正版平台。</p>
+      </div>
+      <div class="foot-links">
+        <a href="#category">影视分类</a>
+        <a href="#library">片库速览</a>
+        <a href="#guide">找片指南</a>
+        <a href="#about">关于本站</a>
+      </div>
+    </div>
+    <div class="copy">© 2345影视大全 · 页面信息仅供索引参考</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chips = document.querySelectorAll('.chip');
+  var items = document.querySelectorAll('#listGrid .item');
+  var noResult = document.getElementById('noResult');
+  var q = document.getElementById('q');
+  var searchBtn = document.getElementById('searchBtn');
+  var currentType = 'all';
+
+  function applyFilter(){
+    var kw = (q.value || '').trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function(el){
+      var typeOk = currentType === 'all' || el.getAttribute('data-type') === currentType;
+      var name = (el.getAttribute('data-name') || '').toLowerCase();
+      var text = el.textContent.toLowerCase();
+      var kwOk = !kw || name.indexOf(kw) > -1 || text.indexOf(kw) > -1;
+      var ok = typeOk && kwOk;
+      el.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+    noResult.style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  chips.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      chips.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentType = btn.getAttribute('data-filter');
+      applyFilter();
+    });
+  });
+
+  searchBtn.addEventListener('click', applyFilter);
+  q.addEventListener('input', applyFilter);
+  q.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); applyFilter(); } });
+})();
+</script>
+</body>
+</html>
